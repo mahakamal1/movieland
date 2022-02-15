@@ -1,0 +1,13 @@
+:root{
+  --background : #FFF8E5;
+  --btncolor : #00A19D;
+}
+
+.custom-raduis{
+  border-radius: 20px;
+  position: relative;
+  transition: all .4s ease;
+}
+.custom-raduis:hover img{
+  border: 3px solid #362222;
+}

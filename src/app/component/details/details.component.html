@@ -1,0 +1,59 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="customImg col-lg-4">
+      <img src="https://image.tmdb.org/t/p/w500{{datafromApi['poster_path']}}">
+      <h4 class="py-3 text-center">{{datafromApi['title']}}</h4>
+    </div>
+    <div class="col-lg-8">
+      <table class="table mt-4">
+        <tbody>
+          <tr style="border-bottom: .2px solid rgba(0, 0, 0, 0.116);">
+            <th scope="row">overview
+            </th>
+            <td><p>{{datafromApi['overview']}}</p></td>
+          </tr>
+          <tr>
+            <th scope="row">release_date</th>
+            <td>{{datafromApi['release_date'] | date}}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">rate</th>
+            <td><p><i class="fas fa-star"style="color:#FFB344;"></i> {{datafromApi['vote_average']}}</p>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">categorey</th>
+            <td colspan="2">{{datafromApi['genres'][0]?.['name']}} {{datafromApi['genres'][1]?.['name']}}
+              {{datafromApi['genres'][2]?.['name']}}  {{datafromApi['genres'][3]?.['name']}}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">
+              original language
+            </th>
+            <td colspan="2">
+              {{datafromApi['original_language']}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <h3 class="text-center py-4 similar-header">Similar Movies</h3>
+  <div class="row">
+    <div
+      data-aos="fade-zoom-in"
+      data-aos-easing="linear"
+      data-aos-duration="1500"
+      class="col-lg-3 text-center"
+          *ngFor="let item of slicedMovieArr">
+      <a class="imageNavFILM" (click)="getMovieDetail(item['id']);getSimaler(item['id'])" [routerLink]="['/movie',item['id']]">
+        <img src="https://image.tmdb.org/t/p/w200{{item['poster_path']}}">
+      </a>
+        <p style="font-weight: 700;">{{item['title']}}</p>
+        <!-- <p class="stars"><i class="fas fa-star"style="color:#FFB344;"></i>{{item['vote_average']}}</p> -->
+      </div>
+
+</div>
+
